@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+	<title>Production</title>
+    <style>
+      *{
+        font-family: 'Poppins', sans-serif;
+      }
+      .main_card{
+          margin: auto;
+          width: 70%;
+          margin-top: 50px;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+          background: linear-gradient(-45deg, #2193b0, #6dd5ed) !important;
+          text-transform: uppercase;
+      }
+      .jumbotron span{
+        float: right;
+      }
+    </style>
+</head>
+<body>
+	{% include 'TVSapp/navbar.html' %}
+	<br>
+    <div class="jumbotron main_card">
+      <div class="jumbotron">
+        <h5 style="font-weight: 1000;"> PRODUCTIONS <span> <a class="btn btn-success btn-sm" href="{% url 'add_task' %}"> Add Task</a> </span></h5>
+          <br>
+          <div class="card">
+            <table class="table table-hover table-sm inside_table">
+              <thead>
+                <tr>
+                  <th> </th>
+                  <th> Machines </th>
+                  <th> Current Status </th>
+                  <th> </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for i in machines %}
+                <tr>
+                    <td><a href="{% url 'product_individual' i.id %}"> View Details</a> </td>
+                    <td> {{i.machinename}}</td>
+                    <td> {{i.status}}</td>
+                    <td><a class="btn btn-warning btn-sm" href="{% url 'change_status' i.id %}"> change status </a></td> 
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+</body>
+</html>

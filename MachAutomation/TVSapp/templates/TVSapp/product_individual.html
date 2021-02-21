@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+	<title>Production</title>
+    <style>
+        *{
+        font-family: 'Poppins', sans-serif;
+      }
+      .main_card{
+          margin: auto;
+          width: 70%;
+          margin-top: 50px;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+          background: linear-gradient(-45deg, #2193b0, #6dd5ed) !important;
+          text-transform: uppercase;
+      }
+    </style>
+</head>
+<body>
+	{% include 'TVSapp/navbar.html' %}
+	<br>
+  <div class="jumbotron main_card">
+        <div class="jumbotron">
+            <h5> <b>MACHINE:</b> {{ machines.machinename }}</h5>
+            <br>
+            <h5> PRODUCTION </h5>
+            <div class="card">
+                <table class="table table-hover table-sm inside_table">
+                    <thead>
+                        <tr>
+                        <th> Job ID </th>
+                        <th> Worker </th>
+                        <th> Worker ID </th>
+                        <th> Production Count </th>
+                        <th> QC Passed </th>
+                        <th> Target Count </th>
+                        <th> Duration </th>
+                        <th> Allotted Duration</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in product %}
+                    <tr>
+                        <td> {{i.jobid}}</td>
+                        <td> {{i.worker.name}}</td>
+                        <td> {{i.worker.empid}}</td>
+                        <td> {{i.production_count}}</td>
+                        <td> {{i.qc_passed}}</td>
+                        <td> {{i.target_count}}</td>
+                        <td> {{i.duration}}</td>
+                        <td> {{i.allotted_duration}}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td><b> TOTAL </b></td>
+                        <td> </td>
+                        <td> </td>
+                        <td><b> {{production}}</b></td>
+                        <td><b> {{qcpassed}} </b></td>
+                        <td><b> {{target}} </b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="float: right; margin-top: 10px;">
+              <a class="btn btn-danger btn-sm" href="{% url 'production' %}"> Back </a>
+            </div>
+        </div>   
+    </div>
+</body>
+</html>

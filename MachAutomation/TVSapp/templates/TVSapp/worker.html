@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+	<title>Worker</title>
+    <style>
+      *{
+        font-family: 'Poppins', sans-serif;
+      }
+      .main_card{
+          margin: auto;
+          width: 70%;
+          margin-top: 50px;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+          background: linear-gradient(-45deg, #2193b0, #6dd5ed) !important;
+          text-transform: uppercase;
+      }
+      .jumbotron span{
+        float: right;
+      }
+    </style>
+</head>
+<body>
+	{% include 'TVSapp/navbar.html' %}
+	<br>
+    <div class="jumbotron main_card">
+      <div class="jumbotron">
+        <h5 style="font-weight: 1000;">WORKERS <span> <a class="btn btn-success btn-sm" href="{% url 'add_worker' %}"> Add Worker</a> </span></h5>
+          <br>
+          <div class="card">
+            <table class="table table-hover table-sm inside_table">
+              <thead>
+                <tr>
+                  <th> Worker ID </th>
+                  <th> Worker Name </th>
+                  <th> Contact </th>
+                  <th> Presence </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for i in workers %}
+                <tr>
+                  <td><a href="{% url 'worker_individual' i.empid %}"> {{i.empid}}</a> </td>
+                  <td> {{i.name}}</td>
+                  <td> {{i.contact}} </td>
+                  <td> {{i.presence}}</td>
+                  <td> <a class="btn btn-warning btn-sm" href="{% url 'change_presence' i.empid %}"> change status </a> </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+</body>
+</html>

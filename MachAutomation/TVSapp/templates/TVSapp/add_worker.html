@@ -1,0 +1,77 @@
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+  <title>Production</title>
+    <style>
+        *{
+        font-family: 'Poppins', sans-serif;
+      }
+      .main_card{
+          margin: auto;
+          width: 70%;
+          margin-top: 50px;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+          background: linear-gradient(-45deg, #2193b0, #6dd5ed) !important;
+          text-transform: uppercase;
+          font-size: 13px;
+          font-weight: 1000;
+      }
+      .form_div{
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-top: 30px;
+      }
+      .btnsection a{
+        float: right;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+      .btnsection input{
+        float: right;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+</head>
+<body>
+  {% include 'TVSapp/navbar.html' %}
+  <br>
+  <div class="jumbotron main_card">
+    <div class="jumbotron">
+      <h5 style="font-weight: 1000;">
+          Fill the below details
+      </h5>
+      <br>
+      <div class="card">
+        <form action="" method="POST"  class="inside_form">
+           <div class="form_div">
+                {% csrf_token %}
+                {{ form.name|as_crispy_field }}
+                <div class="row">
+                  <div class="col-md-4">
+                    {{ form.empid|as_crispy_field }}
+                  </div>
+                  <div class="col-md-4">
+                    {{ form.contact|as_crispy_field }}
+                  </div>
+                  <div class="col-md-4">
+                    {{ form.presence|as_crispy_field }}
+                  </div>
+                </div>
+           </div>
+           <div class="btnsection">
+              <a class="btn btn-danger btn-sm" href="{% url 'workers' %}"> Cancel </a>
+              <input class="btn btn-success btn-sm" type="submit" value="SUBMIT">
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>

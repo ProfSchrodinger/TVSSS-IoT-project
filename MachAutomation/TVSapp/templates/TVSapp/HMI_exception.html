@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+	<title>UNAUTHORIZED</title>
+	<style>
+		*{
+        font-family: 'Poppins', sans-serif;
+        }
+        .box{
+        	width: 65%;
+        }
+		body{
+			margin-top: 100px;
+			margin-left: 40px;
+			margin-right: 40px;
+		}
+		.btndiv{
+			padding-right: 50px; 
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<h3> ** USERNAME OR PASSWORD IS EITHER WORNG OR DOESN'T EXIST ** </h3>
+		<h3> ** RETURN BACK TO LOGIN PAGE ** </h3>
+		<hr>
+		<br>
+		<div class="btndiv">
+			<a class="btn btn-danger btn-sm" href="{% url 'login' %}"> Navigate </a>
+		</div>
+	</div>
+</body>
+</html>
